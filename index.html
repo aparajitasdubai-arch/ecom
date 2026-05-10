@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive ecommerce storefront built with HTML, CSS, and JavaScript.">
+  <title>NovaCart Store</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#home" aria-label="NovaCart home">
+        <span class="brand-mark">N</span>
+        <span>NovaCart</span>
+      </a>
+      <div class="nav-links" aria-label="Primary navigation">
+        <a href="#products">Products</a>
+        <a href="#featured">Featured</a>
+        <a href="#checkout">Checkout</a>
+      </div>
+      <button class="cart-button" id="cartButton" type="button" aria-label="Open cart">
+        <span>Cart</span>
+        <strong id="cartCount">0</strong>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">Curated essentials</p>
+        <h1>Shop smarter home, tech, and style staples.</h1>
+        <p>Responsive ecommerce storefront with live product search, cart updates, and a Netlify-ready static checkout flow.</p>
+        <a class="primary-link" href="#products">Shop collection</a>
+      </div>
+    </section>
+
+    <section class="toolbar-section" id="products" aria-labelledby="productsTitle">
+      <div class="section-heading">
+        <p class="eyebrow">Collection</p>
+        <h2 id="productsTitle">Products</h2>
+      </div>
+      <div class="toolbar" aria-label="Product filters">
+        <label class="search-field">
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Search products">
+        </label>
+        <label class="select-field">
+          <span>Category</span>
+          <select id="categoryFilter">
+            <option value="all">All categories</option>
+          </select>
+        </label>
+        <label class="select-field">
+          <span>Sort</span>
+          <select id="sortFilter">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: low to high</option>
+            <option value="price-high">Price: high to low</option>
+            <option value="rating">Top rated</option>
+          </select>
+        </label>
+      </div>
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="featured" id="featured" aria-labelledby="featuredTitle">
+      <div>
+        <p class="eyebrow">Fast launch</p>
+        <h2 id="featuredTitle">Ready for Netlify hosting</h2>
+        <p>This application uses plain HTML, CSS, and JavaScript. Drop the folder into Netlify or connect it to a repo and publish the project root.</p>
+      </div>
+      <div class="feature-list">
+        <article>
+          <h3>No build required</h3>
+          <p>Static files deploy cleanly on Netlify with the included configuration.</p>
+        </article>
+        <article>
+          <h3>Interactive cart</h3>
+          <p>Quantity controls, totals, and checkout state all run in the browser.</p>
+        </article>
+        <article>
+          <h3>Responsive layout</h3>
+          <p>The storefront adapts from phone screens to wide desktop views.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="checkout-preview" id="checkout" aria-labelledby="checkoutTitle">
+      <div class="section-heading">
+        <p class="eyebrow">Secure checkout</p>
+        <h2 id="checkoutTitle">Place an order</h2>
+      </div>
+      <form class="checkout-form" id="checkoutForm" name="checkout" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="checkout">
+        <label>
+          Full name
+          <input name="name" type="text" autocomplete="name" required>
+        </label>
+        <label>
+          Email
+          <input name="email" type="email" autocomplete="email" required>
+        </label>
+        <label>
+          Shipping address
+          <textarea name="address" rows="4" required></textarea>
+        </label>
+        <label>
+          Order notes
+          <textarea name="notes" rows="3" placeholder="Optional"></textarea>
+        </label>
+        <button class="submit-button" type="submit">Submit order request</button>
+        <p class="form-message" id="formMessage" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-labelledby="cartTitle">
+    <div class="cart-panel">
+      <div class="cart-header">
+        <h2 id="cartTitle">Your cart</h2>
+        <button class="icon-button" id="closeCart" type="button" aria-label="Close cart">x</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-summary">
+        <div>
+          <span>Subtotal</span>
+          <strong id="cartSubtotal">$0.00</strong>
+        </div>
+        <p>Taxes and shipping are calculated after order review.</p>
+        <a class="checkout-button" href="#checkout" id="checkoutLink">Checkout</a>
+      </div>
+    </div>
+  </aside>
+
+  <footer class="site-footer">
+    <p>NovaCart ecommerce demo. Built for static Netlify deployment.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
